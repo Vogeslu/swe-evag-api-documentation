@@ -202,6 +202,7 @@ Ruft eine bestimmte Nachricht mithilfe der ID ab
     "error": "Not found"
 }
 ```
+    
 </details>
 
 
@@ -245,11 +246,15 @@ Gibt Stationen und Haltestellen aus, die dem Suchparameter `q` entsprechen.
 
 **URL** : `https://evag-live.wla-backend.de/node/v2/autocomplete`
 
-**Methode** : `GET`
+**Methode** : `POST`
 
-**Query-Parameter** : 
+**Body-Parameter** (als raw-json) : 
 
-`q` (Suchparameter)
+```json
+{
+    "q": "[SUCHPARAMETER]"
+}
+```
 
 <details>
 <summary><b>Erfolgreiche Antwort (Status Code 200), Beispiel</b> (q = Europaplatz)</summary>
@@ -360,7 +365,7 @@ Zeigt die nächsten Abfahrten für Bus, Bahn und mehr an, die an einer Station, 
 
 **URL-Parameter** : 
 
-`Station-ID` (ID der Station, entnommen aus bspw. Autocomplete (A=1@O=Erfurt, Europaplatz@X=10991866@Y=51012983@U=80@L=151063@B=1@p=1630073948@))
+`Station-ID` (ID der Station, entnommen aus bspw. Autocomplete (A=1@O=Erfurt, Europaplatz@X=10991866@Y=51012983@U=80@L=151063@B=1@p=1630073948@ -> 151063))
 
 <details>
 <summary><b>Erfolgreiche Antwort (Status Code 200), Beispiel</b> (Station-ID = Europaplatz)</summary>
@@ -427,7 +432,7 @@ Sollte eine `Station-ID` ungültig sein, so ist das Element `departures` leer. D
 
 Zeigt die Stationen und Haltestellen einer Journey an.
 
-**URL** : `https://evag-live.wla-backend.de/node/v1/departures/[Journey-ID]`
+**URL** : `https://evag-live.wla-backend.de/node/v1/nextStops/[Journey-ID]`
 
 **Methode** : `GET`
 
